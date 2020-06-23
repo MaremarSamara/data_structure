@@ -1,39 +1,21 @@
-#include <iostream> 
+#include<iostream>
 using namespace std;
-#define size 100
-int stack[size];
-int sp = 0;
-void push(int data) {
-	if (sp == size) {
-		cout << "Full stack" << endl;
-	}
-	stack[sp] = data;
-	sp++;
+typedef int error_code;
+#define SUCCESS 0
+#define OVERFLOW -1
+#define UNDERFLOW -2
 
-}
-int pop() {
-	if (sp == 0) {
-		cout << "Empty stack";
-		return -1;
-	}
-	--sp;
-	return stack[sp];
-}
+class stack {
+private:
+	int count;
+	int size;
+	int* stackArray;
 
-int main() {
-	int x = 5, y = 6;
-	push(x);
-	push(y);
-	push(7);
-	cout << pop() << endl;
-	cout << pop() << endl;
+public:
+	stack();
+	stack(int n);
+	~stack();
+	error_code pop();
+	error_code push(int item);
 
-	push(3);
-	cout << pop() << endl;
-	cout << pop() << endl;
-	cout << pop() << endl;
-	cout << pop() << endl;
-}
-
-
-
+};
